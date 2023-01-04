@@ -13,22 +13,32 @@ export function signUp(req, res){
 
  export function sendTweet(req, res){
 
-    const loggedUsers = users.map((user) => user.username)
 
-    const tweet = req.body
+    const message = req.body
 
-    if(loggedUsers.some((user) => user === tweet.username)){
+    const user = users.filter((user) => user.username === message.username)
 
-        tweets.push(tweet)
 
-        res.status(201).send("OK")
-        console.log(tweets)
-    }else{
+    if(!user[0]){
 
         res.status(401).send("UNAUTHORIZED")
+    }else{
+        const avatar = user[0].avatar
+        const body = {...message, avatar}
+
+        tweets.push(body)
+        res.status(201).send("OK")
     }
 
 
+}
+
+
+export function getTweets(req, res){
+
+    const feed = tweets.slice(-10)
+
+    res.send(feed)
 }
 
 export function get(req, res){
