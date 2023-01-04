@@ -2,7 +2,7 @@ import express, { json } from "express"
 import cors from "cors"
 import dotenv from 'dotenv'
 dotenv.config()
-import { signUp, sendTweet, get, getTweets } from "./controllers.js"
+import { signUp, sendTweet, getTweets } from "./controllers.js"
 
 const app = express()
 app.use(cors())
@@ -16,7 +16,6 @@ app.post("/tweets", sendTweet)
 
 app.get("/tweets", getTweets)
 
-app.get("/", get)
 
 
 

@@ -40,8 +40,3 @@ export function getTweets(req, res){
 
     res.send(feed)
 }
-
-export function get(req, res){
-
-    res.send(users)
-}
