@@ -16,14 +16,14 @@ export function signUp(req, res){
 
     const message = req.body
 
-    const user = users.filter((user) => user.username === message.username)
+    const user = users.find((user) => user.username === message.username)
 
 
-    if(!user[0]){
+    if(!user){
 
         res.status(401).send("UNAUTHORIZED")
     }else{
-        const avatar = user[0].avatar
+        const avatar = user.avatar
         const body = {...message, avatar}
 
         tweets.push(body)
