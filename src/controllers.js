@@ -56,3 +56,12 @@ export function getTweets(req, res){
 
     res.send(feed)
 }
+
+export function getTweetsByUser(req, res){
+
+    const {username} = req.params
+
+    const userTweets = tweets.filter((tweet) =>tweet.username === username )
+
+    res.send(userTweets)
+}
