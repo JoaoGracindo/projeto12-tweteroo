@@ -25,11 +25,11 @@ export function signUp(req, res){
 
     const {tweet} = req.body
 
-    const {username} = req.headers
+    const {user} = req.headers
 
-    const user = users.find((user) => user.username === username)
+    const {avatar} = users.find((user) => user.username === username)
 
-    const message = {username, tweet}
+    const message = {username:user, tweet}
 
     const validation = tweetSchema.validate(message)
 
@@ -41,11 +41,10 @@ export function signUp(req, res){
     }
 
 
-    if(!user){
+    if(!avatar){
 
         res.status(401).send("UNAUTHORIZED")
     }else{
-        const avatar = user.avatar
         const body = {username, avatar, message}
 
         tweets.push(body)
