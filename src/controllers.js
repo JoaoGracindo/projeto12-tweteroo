@@ -29,9 +29,7 @@ export function signUp(req, res){
 
     const {avatar} = users.find((obj) => obj.username === user);
 
-    const message = {username:user, tweet};
-
-    const validation = tweetSchema.validate(message);
+    const validation = tweetSchema.validate(tweet);
 
 
 

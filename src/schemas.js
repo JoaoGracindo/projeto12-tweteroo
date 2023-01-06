@@ -4,7 +4,7 @@ const userSchema = Joi.object({
     username: Joi.required()
                  .string()
                  .min(1),
-    avatar: Joi.required()
+    avatar:  Joi.required()
                 .string()
                 .min(1)
 });
