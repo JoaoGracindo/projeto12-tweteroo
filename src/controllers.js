@@ -23,7 +23,7 @@ export function signUp(req, res){
  export function sendTweet(req, res){
 
 
-    const {tweet} = req.body;
+    const tweet = req.body;
 
     const {user} = req.headers;
 
