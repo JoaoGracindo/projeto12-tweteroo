@@ -10,8 +10,9 @@ const userSchema = Joi.object({
 });
 
 const tweetSchema = Joi.object({
-    username: Joi.required(),
     tweet: Joi.required()
+              .string()
+              .min(1)
 });
 
 export {tweetSchema, userSchema};
