@@ -27,7 +27,7 @@ export function signUp(req, res){
 
     const {user} = req.headers;
 
-    const {avatar} = users.find((obj) => obj.username === user);
+    const isOnline = users.find((obj) => obj.username === user);
 
     const validation = tweetSchema.validate(tweet);
 
@@ -39,11 +39,11 @@ export function signUp(req, res){
     }
 
 
-    if(!avatar){
+    if(!isOnline){
 
         res.status(401).send("UNAUTHORIZED");
     }else{
-        const body = {username: user, avatar, tweet};
+        const body = {username: user, avatar: isOnline.avatar, ...tweet};
 
         tweets.push(body);
         res.status(201).send("OK");
