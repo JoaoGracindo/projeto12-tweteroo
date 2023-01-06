@@ -27,7 +27,7 @@ export function signUp(req, res){
 
     const {user} = req.headers
 
-    const {avatar} = users.find((user) => user.username === username)
+    const {avatar} = users.find((obj) => obj.username === user)
 
     const message = {username:user, tweet}
 
