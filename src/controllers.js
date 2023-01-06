@@ -52,7 +52,17 @@ export function signUp(req, res){
 
 export function getTweets(req, res){
 
-    const feed = tweets.slice(-10)
+    const {page} = req.query
+
+    if(!page){
+        res.send(tweets.slice(-10))
+        return
+    }
+
+    const start = -10*Number(page)
+    const end = start + 9
+
+    const feed = tweets.slice(start, end)
 
     res.send(feed)
 }
