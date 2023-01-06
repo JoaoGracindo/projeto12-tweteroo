@@ -57,9 +57,11 @@ export function getTweets(req, res){
     if(!page){
         res.send(tweets.slice(-10))
         return
+    }else if(Number(page) < 1 || isNaN(Number(page))){
+        res.status(400).send("Informe uma pagina valida")
     }
 
-    const start = -10*Number(page)
+    const start = -10*page
     const end = start + 9
 
     const feed = tweets.slice(start, end)
