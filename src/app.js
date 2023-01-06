@@ -21,4 +21,4 @@ app.get('/tweets/:username', getTweetsByUser);
 
 
 
-app.listen(process.env.URI, ()=> console.log("server is listening..."));
+app.listen(5000, ()=> console.log("server is listening..."));
