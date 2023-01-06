@@ -45,7 +45,7 @@ export function signUp(req, res){
 
         res.status(401).send("UNAUTHORIZED")
     }else{
-        const body = {username: user, avatar, message}
+        const body = {username: user, avatar, tweet}
 
         tweets.push(body)
         res.status(201).send("OK")
