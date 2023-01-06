@@ -23,11 +23,17 @@ export function signUp(req, res){
  export function sendTweet(req, res){
 
 
-    const message = req.body
+    const {tweet} = req.body
 
-    const user = users.find((user) => user.username === message.username)
+    const {username} = req.headers
+
+    const user = users.find((user) => user.username === username)
+
+    const message = {username, tweet}
 
     const validation = tweetSchema.validate(message)
+
+
 
     if(validation.error){
         res.status(400).send('Todos os campos são obrigatórios!')
@@ -40,7 +46,7 @@ export function signUp(req, res){
         res.status(401).send("UNAUTHORIZED")
     }else{
         const avatar = user.avatar
-        const body = {...message, avatar}
+        const body = {username, avatar, message}
 
         tweets.push(body)
         res.status(201).send("OK")
