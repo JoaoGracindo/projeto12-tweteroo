@@ -1,18 +1,18 @@
 import Joi from "joi";
 
 const userSchema = Joi.object({
-    username: Joi.required()
-                 .string()
-                 .min(1),
-    avatar:  Joi.required()
-                .string()
-                .min(1)
+    username: Joi.string()
+        .min(1)
+        .required(),
+    avatar: Joi.string()
+    .min(1)
+    .required()
 });
 
 const tweetSchema = Joi.object({
-    tweet: Joi.required()
-              .string()
-              .min(1)
+    tweet: Joi.string()
+    .min(1)
+    .required(),
 });
 
 export {tweetSchema, userSchema};
