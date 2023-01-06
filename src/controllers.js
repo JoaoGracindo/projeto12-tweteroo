@@ -59,17 +59,17 @@ export function getTweets(req, res){
 
     const {page} = req.query;
 
-    if(!page){
-        res.send(tweets.slice(-10));
+    if(!page || Number(page) === 1){
+        res.send(tweets.slice(-10).reverse());
         return;
     }else if(Number(page) < 1 || isNaN(Number(page))){
         res.status(400).send("Informe uma pagina valida");
     }
 
     const start = -10*page;
-    const end = start + 9;
+    const end = start + 10;
 
-    const feed = tweets.slice(start, end);
+    const feed = tweets.slice(start, end).reverse();
 
     res.send(feed);
 }
