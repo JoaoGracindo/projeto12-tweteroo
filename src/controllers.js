@@ -1,4 +1,4 @@
-import { tweetSchema, userSchema } from "./schemas.js"
+import { tweetSchema, userSchema } from "./schemas.js";
 
 const users = [];
 const tweets = [];
@@ -18,7 +18,7 @@ export function signUp(req, res){
     users.push(user);
  
     res.status(201).send("OK");
- };
+ }
 
  export function sendTweet(req, res){
 
@@ -52,7 +52,7 @@ export function signUp(req, res){
     }
 
 
-};
+}
 
 
 export function getTweets(req, res){
@@ -72,7 +72,7 @@ export function getTweets(req, res){
     const feed = tweets.slice(start, end);
 
     res.send(feed);
-};
+}
 
 export function getTweetsByUser(req, res){
 
